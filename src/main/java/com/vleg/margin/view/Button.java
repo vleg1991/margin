@@ -12,6 +12,8 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.math.BigDecimal;
+import java.math.RoundingMode;
 
 @Component(value = "recalculateButton")
 public class Button extends JButton {
@@ -40,7 +42,8 @@ public class Button extends JButton {
             public void mouseClicked(MouseEvent e) {
                 try {
                     BigMoney margin = marginController.getMargin(purchaseInfo);
-                    marginLabel.setText(margin.toString());
+                    BigDecimal roundedMargin = margin.getAmount().setScale(2, RoundingMode.DOWN).stripTrailingZeros();
+                    marginLabel.setText(BigMoney.of(margin.getCurrencyUnit(), roundedMargin).toString());
                 } catch (InvalidInputException ex) {
                     JFrame frame = (JFrame) SwingUtilities.getRoot(self);
                     JOptionPane.showMessageDialog(frame,

@@ -29,20 +29,27 @@ public class PriceService extends PricesRegistry {
         this.yandexService = yandexService;
     }
 
-    public BigMoney getPurchasePrice(LocalDate sellingDate) {
+    public BigMoney getPurchasePrice(LocalDate purchaseDate) {
 
-        BigMoney purchasePrice = getSellPrice(sellingDate);
-
-        BigDecimal purchaseAmount = purchasePrice.getAmount();
-        BigDecimal spreadAmount = purchaseAmount
-                .divide(BigDecimal.valueOf(100))
-                .multiply(spreadPercentage);
+        BigMoney purchasePrice = getPriceBy(purchaseDate).getPrice();
+        BigDecimal spreadAmount = getSpread(purchasePrice);
 
         return purchasePrice.plus(spreadAmount);
     }
 
-    public BigMoney getSellPrice(LocalDate purchaseDate) {
-        return getPriceBy(purchaseDate).getPrice();
+    public BigMoney getSellPrice(LocalDate sellDate) {
+
+        BigMoney sellPrice = getPriceBy(sellDate).getPrice();
+        BigDecimal spreadAmount = getSpread(sellPrice);
+
+        return sellPrice.minus(spreadAmount);
+    }
+
+    private BigDecimal getSpread(BigMoney price) {
+        BigDecimal purchaseAmount = price.getAmount();
+        return purchaseAmount
+                .divide(BigDecimal.valueOf(100))
+                .multiply(spreadPercentage);
     }
 
     public Price getPriceBy(LocalDate date) throws PricesRetrievingException {

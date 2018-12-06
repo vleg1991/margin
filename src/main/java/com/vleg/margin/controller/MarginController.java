@@ -36,7 +36,6 @@ public class MarginController {
                 throw new InvalidInputException("Amount is not USD");
         }
 
-        BigMoney marginValuePerOneDollar = marginService.getMarginBetweenNowAndSpecifiedDate(purchaseInfo.getDate());
-        return marginService.getMarginAmount(purchaseInfo.getAmount(), marginValuePerOneDollar);
+        return marginService.getMargin(purchaseInfo.getDate(), purchaseInfo.getAmount());
     }
 }
