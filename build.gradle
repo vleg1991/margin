@@ -26,8 +26,15 @@ repositories {
 
 dependencies {
 	implementation('org.springframework.boot:spring-boot-starter')
+    implementation('org.springframework.boot:spring-boot-starter-web')
 
 	compileOnly 'org.projectlombok:lombok:1.18.4'
-	
+	compile 'com.squareup.retrofit2:retrofit:2.1.0'
+	compile 'com.squareup.retrofit2:converter-jackson:2.1.0'
+	compile 'org.joda:joda-money:0.12'
+	compile 'org.apache.commons:commons-collections4:4.0'
+	compile 'org.apache.commons:commons-lang3:3.0'
+	compile 'org.swinglabs:swingx:1.6'
+
 	testImplementation('org.springframework.boot:spring-boot-starter-test')
 }
