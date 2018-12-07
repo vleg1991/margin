@@ -1,7 +1,7 @@
 package com.vleg.margin.service;
 
 import com.vleg.margin.entities.Price;
-import com.vleg.margin.entities.dto.YandexPricesDTO;
+import com.vleg.margin.entities.dto.PricesDTO;
 import com.vleg.margin.exceptions.PricesRetrievingException;
 import com.vleg.margin.utils.converters.PriceConverter;
 import okhttp3.OkHttpClient;
@@ -38,10 +38,10 @@ public class YandexService {
 
     public Set<Price> retrievePrices() {
 
-        YandexPricesDTO result = null;
+        PricesDTO result = null;
 
         try {
-            Response<YandexPricesDTO> response = yandexSendService.getPrices().execute();
+            Response<PricesDTO> response = yandexSendService.getPrices().execute();
             if (response.isSuccessful()) {
                 result = response.body();
             } else {

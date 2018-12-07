@@ -8,8 +8,8 @@ import org.springframework.stereotype.Component;
 import java.time.LocalDate;
 
 @Data
-@NoArgsConstructor
 @Component
+@NoArgsConstructor
 public class PurchaseInfo {
 
     private LocalDate date = LocalDate.now();

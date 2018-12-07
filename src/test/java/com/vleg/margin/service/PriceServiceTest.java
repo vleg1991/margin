@@ -13,7 +13,6 @@ import org.mockito.junit.MockitoJUnitRunner;
 import org.mockito.stubbing.Answer;
 
 import java.math.BigDecimal;
-import java.math.RoundingMode;
 import java.time.LocalDate;
 import java.util.HashSet;
 import java.util.Set;
@@ -70,10 +69,9 @@ public class PriceServiceTest {
     public void getSellPrice() throws Exception {
         BigDecimal expectedMargin = BigDecimal.valueOf(new Double(66.7377 / 100 * 0.5));
         BigMoney expectedResult = BigMoney.of(CurrencyUnit.of("RUB"), BigDecimal.valueOf(66.7377).subtract(expectedMargin));
-
         BigMoney result = priceService.getSellPrice(LocalDate.now());
 
-        assertEquals(result.rounded(2, RoundingMode.DOWN), expectedResult.rounded(2, RoundingMode.DOWN));
+        assertEquals(result, expectedResult);
         verify(priceService).getSellPrice(LocalDate.now());
     }
 
@@ -88,13 +86,6 @@ public class PriceServiceTest {
         verify(yandexService).retrievePrices();
         verify(priceService, times(1)).getPriceFromRegistry(LocalDate.now());
 
-    }
-
-    @Test
-    public void getPriceFromRegistry() throws Exception {
-//        BigMoney expectedResult = BigMoney.of(CurrencyUnit.of("RUB"), 66.7377);
-//        assertEquals(priceService.getSellPrice(LocalDate.now()), expectedResult);
-//        verify(priceService).getSellPrice(LocalDate.now());
     }
 
 }

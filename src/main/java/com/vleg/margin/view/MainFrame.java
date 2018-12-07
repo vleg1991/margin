@@ -30,7 +30,7 @@ public class MainFrame extends JFrame {
 
     @PostConstruct
     public void init() {
-        this.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
+        this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         this.setSize(new Dimension(60, 250));
         this.setResizable(false);
         this.setLocationRelativeTo(null);

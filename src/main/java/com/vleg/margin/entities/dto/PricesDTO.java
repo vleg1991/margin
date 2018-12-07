@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Data
-public class YandexPricesDTO {
+public class PricesDTO {
 
     private List<List<String>> prices = new ArrayList<>();
     private String tzoffset_hours;
