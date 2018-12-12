@@ -1,9 +1,7 @@
-Приложение для подсчета выгоды от продажи/покупки валюты (USD).<br>
-Данные по валютам берутся из API Yandex (news.yandex.ru).<br>
-Суть работы приложения заключается в подсчете выгоды при продаже валюты сегодня, в сравнении с закупочной ценой указываемого пользователем дня.
+This is a technical test task project.<br>
+Application purpose is compting benifit of selling of USD relative to the RUB exchange rate.<br>
+As resource of data about currecy USD exchange rates, here I'm using API Yandex (news.yandex.ru).<br>
 
-Для запуска приложения можно воспользоваться средствами IDE для сборки проекта<br>
-Проект использует библиотеку <a href="https://projectlombok.org/">Lombok</a>, при необходимости надо включить <a href="https://www.jetbrains.com/help/idea/compiler-annotation-processors.html">Annotation processing</a> ("Enable Annotation Processing", этого флага будет достаточно)<br>
-Для сборки проекта достаточно использовать таску "jar".<br>
-Для запуска будет достаточно использовать "bootRun" без аргументов.
-
+If you want to run application use IDE for a project building.
+Also project uses <a href="https://projectlombok.org/">Lombok</a> lib, if it nessesary you should "Enable Annotation Processing" (for a IDEA <a href="https://www.jetbrains.com/help/idea/compiler-annotation-processors.html">Annotation processing</a>).
+Fanally, project runs via "bootRun" task without arguments.
